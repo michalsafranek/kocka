@@ -19,11 +19,22 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.component('menu-component', require('./components/MenuComponent.vue').default);
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+const app = new Vue({
+    el: '#app',
+});
 
 //Smooth scrolling with links
 $('a[href*=\\#]').on('click', function(event){
     event.preventDefault();
-    $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+    $('html,body').animate({scrollTop:$(this.hash).offset().top-100}, 500);
 });
 
 // Smooth scrolling when the document is loaded and ready

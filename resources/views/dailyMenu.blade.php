@@ -25,7 +25,8 @@
             </div>
         </div>
         <div class="container-xl">
-            <div id="daily-menu" class="mt-3" >
+            <a class="anchor" id="nabidka-dne"></a>
+            <div id="" class="mt-3" >
                 <h1>Nabídka dne</h1>
                 <h3>Dnešní nabídka</h3>
                 <ul class=leaders>
@@ -81,7 +82,8 @@
             <nav class="navbar navbar-divider bg-dark">
                 <img class="navbar-brand position-absolute kocka" src="{{ asset('images/logo.png') }}" style="width: 100px;">
             </nav>
-            <div id="menu" class="mt-3">
+            <a class="anchor" id="menu"></a>
+            <div class="mt-3">
                 <h1>Stálé menu</h1>
                 <div class="row">
                     <div class="col-md-6 mb-5 pb-3">
@@ -172,11 +174,22 @@
             <nav class="navbar navbar-divider bg-dark">
                 <img class="navbar-brand position-absolute kocka" src="{{ asset('images/logo.png') }}" style="width: 100px;">
             </nav>
-            <div id="contact" class="mt-3">
+            <a class="anchor" id="fotogalerie"></a>
+            <div class="mt-3">
+                <h1>Fotogalerie</h1>
+            </div>
+            <a class="anchor" id="kontakt"></a>
+            <div class="mt-3">
                 <h1>Kontakt</h1>
             </div>
         </div>
 
 
     </div>
+@endsection
+@section('scripts')
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="{{ asset("js/app.js") }}"></script>
 @endsection

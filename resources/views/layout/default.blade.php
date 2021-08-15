@@ -14,10 +14,6 @@
 @yield('topMenu')
 @yield('bottomMenu')
 @yield('content')
-
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="{{ asset("js/app.js") }}"></script>
+@yield('scripts')
 </body>
 </html>

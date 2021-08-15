@@ -1,5 +1,6 @@
 @extends('layout.default')
 @section('content')
+    <script src="http://localhost:8098"></script>
     <div class="container-xl">
         <nav class="navbar navbar-expand-xl bg-dark navbar-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -14,26 +15,16 @@
                     </li>
                 </ul>
         </nav>
-        <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item text-white">
-                    Správa menu - {{ $restaurant->name }}
-                </li>
-            </ul>
-        </nav>
-        <div class="row">
-            <div class="col-3 ">
-                <div class="list-group">
-                    <button class="list-group-item">16. 8. - 22. 8. 2021<span class="float-right">&gt</span></button>
-                    <button class="list-group-item active">16. 8. - 22. 8. 2021<span class="float-right">&gt</span></button>
-                </div>
-            </div>
 
+        <div id="app">
+            <menu-component :restaurant="{{ $restaurant }}"></menu-component>
         </div>
 
 
+
+
     </div>
+@endsection
+@section('scripts')
+    <script src="{{ asset('js/menu.js') }}"></script>
 @endsection

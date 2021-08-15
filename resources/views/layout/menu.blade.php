@@ -6,16 +6,16 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#daily-menu">Nabídka dne</a>
+                <a class="nav-link" href="#nabidka-dne">Nabídka dne</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Stálé menu</a>
+                <a class="nav-link" href="#menu">Stálé menu</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Fotogalerie</a>
+                <a class="nav-link" href="#fotogalerie">Fotogalerie</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Kontakt</a>
+                <a class="nav-link" href="#kontakt">Kontakt</a>
             </li>
         </ul>
     </div>
