@@ -1867,9 +1867,13 @@ $('a[href*=\\#]').on('click', function (event) {
 }); // Smooth scrolling when the document is loaded and ready
 
 $(document).ready(function () {
-  $('html,body').animate({
-    scrollTop: $(location.hash).offset().top
-  }, 500);
+  // $('html,body').animate({scrollTop:$(location.hash).offset().top}, 500);
+  $('.navbar-collapse').on('show.bs.collapse', function () {
+    $('.navbar .navbar-brand').fadeOut(200);
+  });
+  $('.navbar-collapse').on('hidden.bs.collapse.in', function () {
+    $('.navbar .navbar-brand').fadeIn(200);
+  });
 });
 
 /***/ }),

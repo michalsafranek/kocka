@@ -14,14 +14,17 @@ class CreateMenuMealsTable extends Migration
     public function up()
     {
         Schema::create('menu_meals', function (Blueprint $table) {
-            $table->id();
-            $table->integer('menu', false, false);
+            $table->integer('restaurant', false, false);
+            $table->smallInteger('year', false, false);
+            $table->tinyInteger('week', false, false);
             $table->tinyInteger('day', false, false);
+            $table->tinyInteger('mealId', false, false);
             $table->enum('type', ['soup', 'main', 'desert', 'text']);
             $table->string('ammount', 15)->nullable();
             $table->string('name');
             $table->double('price', 6,2);
             $table->string('alergens', 50);
+            $table->primary(['restaurant', 'year','week','day','mealId']);
             $table->timestamps();
         });
     }

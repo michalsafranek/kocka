@@ -20,6 +20,7 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('menu-component', require('./components/MenuComponent.vue').default);
+Vue.component('menu-emails-component', require('./components/MenuEmailsComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,13 +32,3 @@ const app = new Vue({
     el: '#app',
 });
 
-//Smooth scrolling with links
-$('a[href*=\\#]').on('click', function(event){
-    event.preventDefault();
-    $('html,body').animate({scrollTop:$(this.hash).offset().top-100}, 500);
-});
-
-// Smooth scrolling when the document is loaded and ready
-$(document).ready(function(){
-    $('html,body').animate({scrollTop:$(location.hash).offset().top}, 500);
-});

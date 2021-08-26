@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top ">
-    <a class="navbar-brand position-absolute kocka" href="#"><img src="{{ asset('images/logo.png') }}" style="width: 300px;"></a>
+    <a class="navbar-brand position-absolute kocka" href="#"><img src="{{ asset('images/logo.png') }}"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>

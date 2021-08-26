@@ -14,14 +14,13 @@ class CreateMenusTable extends Migration
     public function up()
     {
         Schema::create('menus', function (Blueprint $table) {
-            $table->id();
             $table->integer('restaurant', false, true);
-            $table->smallInteger('year', false, false);
-            $table->tinyInteger('week', false, false);
+            $table->smallInteger('year', false, true);
+            $table->tinyInteger('week', false, true);
             $table->string('caption');
             $table->text('text');
             $table->timestamps();
-            $table->unique(['year', 'week']);
+            $table->primary(['restaurant', 'year', 'week']);
         });
     }
 

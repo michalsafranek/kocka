@@ -24,12 +24,18 @@
                 <a href="/menu/zamek" class="btn btn-block  bg-dark btn-outline-secondary d-flex flex-wrap align-items-center" style="min-height: 120px;">
                     <img src="{{ asset('images/logo_zamek.png') }}" class="w-100"/>
                 </a>
+                <div class="mt-3 text-center">
+                    <a href="/menu/emails/zamek">Správa e-mailů</a>
+                </div>
             </div>
             <div class="col-1">&nbsp;</div>
             <div class="col-md-3">
                 <a href="/menu/kocka" class="btn btn-block  bg-dark btn-outline-secondary d-flex flex-wrap align-items-center" style="min-height: 120px;">
                     <img src="{{ asset('images/logo.png') }}" class="w-100"/>
                 </a>
+                <div class="mt-3 text-center">
+                    <a href="/menu/emails/kocka">Správa e-mailů</a>
+                </div>
             </div>
         </div>
     </div>
