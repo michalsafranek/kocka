@@ -11,73 +11,24 @@
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ asset('images/foto/Dobris-24.jpg') }}" alt="Second slide">
+                    <img class="d-block w-100" src="{{ asset('/images/foto/Dobris-24.jpg') }}" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('images/foto/Dobris-19.jpg') }}" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('/images/foto/Dobris-19.jpg') }}" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('images/foto/Dobris-27.jpg') }}" alt="Third slide">
+                    <img class="d-block w-100" src="{{ asset('/images/foto/Dobris-27.jpg') }}" alt="Third slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('images/foto/Dobris-39.jpg') }}" alt="Fourth slide">
+                    <img class="d-block w-100" src="{{ asset('/images/foto/Dobris-39.jpg') }}" alt="Fourth slide">
                 </div>
             </div>
         </div>
         <div class="container-xl">
-            <a class="anchor" id="nabidka-dne"></a>
-            <div id="" class="mt-3" >
+            <a class="anchor" id="nabidka-dne" style="top: -100px;"></a>
+            <div class="mt-3 mb-5" id="app">
                 <h1>Nabídka dne</h1>
-                <h3>Dnešní nabídka</h3>
-                <ul class=leaders>
-                    <li>
-                        <span>Hovězí vývar se zeleninou a nudlemi</span>
-                        <span>35 Kč</span>
-                    </li>
-                    <li>
-                        <span>1. 1/4 Pečená kachna na kmíně , bramborový knedlík, bílé zelí</span>
-                        <span>145 Kč</span>
-                    </li>
-                    <li>
-                        <span>2. 120g Smažený vepřový řízek, bramborový salát</span>
-                        <span>130 Kč</span>
-                    </li>
-                    <li>
-                        <span>3. 120g Kuřecí plátek v sýrovém těstíčku, vařené brambory, tatarka</span>
-                        <span>110 Kč</span>
-                    </li>
-                    <li>
-                        <span>3. 120g Kuřecí plátek v sýrovém těstíčku, vařené brambory, tatarka</span>
-                        <span>115 Kč</span>
-                    </li>
-                </ul>
-                <h3>Zítřejší nabídka</h3>
-                <ul class=leaders>
-                    <li>
-                        <span>Hovězí vývar se zeleninou a nudlemi</span>
-                        <span>35 Kč</span>
-                    </li>
-                    <li>
-                        <span>1. 1/4 Pečená kachna na kmíně , bramborový knedlík, bílé zelí</span>
-                        <span>145 Kč</span>
-                    </li>
-                    <li>
-                        <span>2. 120g Smažený vepřový řízek, bramborový salát</span>
-                        <span>130 Kč</span>
-                    </li>
-                    <li>
-                        <span>3. 120g Kuřecí plátek v sýrovém těstíčku, vařené brambory, tatarka</span>
-                        <span>110 Kč</span>
-                    </li>
-                    <li>
-                        <span>3. 120g Kuřecí plátek v sýrovém těstíčku, vařené brambory, tatarka</span>
-                        <span>115 Kč</span>
-                    </li>
-                </ul>
-                <div class="text-center mb-4">
-                    <button class="btn btn-outline-secondary ">Zobrazit nabídku na celý týden</button>
-                </div>
-
+                <today-menu></today-menu>
             </div>
             <nav class="navbar navbar-divider bg-dark">
                 <img class="navbar-brand position-absolute kocka" src="{{ asset('images/logo.png') }}" style="width: 100px;">
@@ -177,10 +128,46 @@
             <a class="anchor" id="fotogalerie"></a>
             <div class="mt-3">
                 <h1>Fotogalerie</h1>
+                <div class="row">
+                    @for($i=1; $i<23; $i++)
+                        <div class="col-md-6">
+                            <img src="/images/photogallery/placeholder.png" data-src="/images/photogallery/{{ $i }}.jpg" class="w-100 lazy" alt="Tankovna modrá kočka foto"/>
+                        </div>
+                    @endfor
+                </div>
             </div>
             <a class="anchor" id="kontakt"></a>
-            <div class="mt-3">
-                <h1>Kontakt</h1>
+            <div class="mt-4">
+
+                <div class="row">
+
+                    <div class="col-lg-6 text-center">
+                        <h1>Kontakt</h1>
+                        <div class=" text-center">
+                            <div>Tel: +420 737 073 003</div>
+                            <div>E-mail: info@kockadobris.cz</div>
+
+                            <div class="mt-2">Školní 36 (Sportovní hala)<br/>263 01 Dobříš<br/>Česká republika</div>
+                            <div class="mt-2">IČO: 616 56 852<br/>DIČ: CZ7811281115</div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <h1>Otevírací doba</h1>
+                        <div><strong>Pondělí</strong> 10:30 - 22:00</div>
+                        <div><strong>Úterý</strong> 10:30 - 22:00</div>
+                        <div><strong>Středa</strong> 10:30 - 22:00</div>
+                        <div><strong>Čtvrtek</strong> 10:30 - 22:00</div>
+                        <div><strong>Pátek</strong> 10:30 - 23:00</div>
+                        <div><strong>Sobota</strong> 11:00 - 23:00</div>
+                        <div><strong>Neděle</strong> 10:30 - 22:00</div>
+                    </div>
+                    <div class="col-12">
+                        <h1>&nbsp;</h1>
+                        <div id="mapa" class="w-100" style="height:400px;"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -192,4 +179,21 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
     <script src="{{ asset("js/app.js") }}"></script>
+    <script src="https://api.mapy.cz/loader.js"></script>
+    <script>Loader.load()</script>
+    <script type="text/javascript">
+        var stred = SMap.Coords.fromWGS84(14.1738597, 49.7779228);
+        var mapa = new SMap(JAK.gel("mapa"), stred, 15);
+        mapa.addDefaultLayer(SMap.DEF_BASE).enable();
+        mapa.addDefaultControls();
+
+        var layer = new SMap.Layer.Marker();
+        mapa.addLayer(layer);
+        layer.enable();
+
+
+        var marker = new SMap.Marker(stred, "myMarker");
+        layer.addMarker(marker);
+
+    </script>
 @endsection

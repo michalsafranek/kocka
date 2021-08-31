@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('jquery-recliner');
 
 window.Vue = require('vue').default;
 
@@ -18,6 +19,7 @@ window.Vue = require('vue').default;
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+Vue.component('today-menu', require('./components/TodayMenu.vue').default)
 
 
 //Smooth scrolling with links
@@ -36,4 +38,15 @@ $(document).ready(function(){
     $('.navbar-collapse').on('hidden.bs.collapse.in', function() {
         $('.navbar .navbar-brand').fadeIn(200);
     });
+
+    $(".lazy").recliner({
+        attrib: "data-src", // selector for attribute containing the media src
+        throttle: 300,      // millisecond interval at which to process events
+        threshold: 100,     // scroll distance from element before its loaded
+        printable: true,    // be printer friendly and show all elements on document print
+        live: true          // auto bind lazy loading to ajax loaded elements
+    });
+});
+const app = new Vue({
+    el: '#app',
 });

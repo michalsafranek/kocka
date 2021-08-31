@@ -12,8 +12,8 @@
                         {{ selectedMenuId !== null ? menus[selectedMenuId].caption : 'Není vybráno žádné menu' }}
                         <div class="position-absolute btn-group" style="top:0.45em; right: 0.65em;">
                             <button class="btn btn-sm btn-outline-primary" @click="setDefaultLayout"><i class="fas fa-list"></i> Výchozí layout</button>
-                            <button class="btn btn-sm btn-outline-primary"><i class="fas fa-file-alt"></i> PDF</button>
-                            <button class="btn btn-sm btn-outline-primary"><i class="fas fa-envelope"></i> Email</button>
+                            <a :href="'/menu/print/'+restaurant.id+'/'+menus[selectedMenuId].year+'/'+menus[selectedMenuId].week" class="btn btn-sm btn-outline-primary"><i class="fas fa-file-alt"></i> PDF</a>
+                            <a :href="'/menu/email/'+restaurant.id+'/'+menus[selectedMenuId].year+'/'+menus[selectedMenuId].week" class="btn btn-sm btn-outline-primary"><i class="fas fa-envelope"></i> Email</a>
                             <button class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i> Stáhnout</button>
                         </div>
                     </h5>

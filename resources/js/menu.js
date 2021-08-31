@@ -21,6 +21,7 @@ window.Vue = require('vue').default;
 
 Vue.component('menu-component', require('./components/MenuComponent.vue').default);
 Vue.component('menu-emails-component', require('./components/MenuEmailsComponent').default);
+Vue.component('send-menu', require('./components/SendMenu').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

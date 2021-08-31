@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",
+        "jquery-recliner": "^0.2.5",
         "vuedraggable": "^2.24.3"
     }
 }
