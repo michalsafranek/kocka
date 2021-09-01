@@ -148,7 +148,7 @@ class MenuController extends Controller
                         $daysHtml .= '<div style="text-align: center">'.$meal->name.'</div>';
                     }
                     else {
-                        $daysHtml .= '<div><img src="/images/meal_icons/'.$meal->type.'.png" style="height: 12px;"> '.$meal->name.'......................'.$meal->price.' Kč</div>';
+                        $daysHtml .= '<div><img src="images/meal_icons/'.$meal->type.'.png" style="height: 12px;"> '.$meal->name.'......................'.$meal->price.' Kč</div>';
                     }
 
                 }
@@ -163,7 +163,7 @@ class MenuController extends Controller
             h1 { font-family: cambria; font-weight: bold; font-size: 16pt; text-decoration: underline;}
             img#logo { width: 4cm;}
         </style>
-        <div style="text-align: right"><img id="logo" src="/images/logo_print/'.$restaurant.'.jpg"></div>
+        <div style="text-align: right"><img id="logo" src="images/logo_print/'.$restaurant.'.jpg"></div>
         <div style="text-align: center;">
             <h1>Nabídka poledního menu od '.$menu->caption.'</h1>
             '.$daysHtml.'
