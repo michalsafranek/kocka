@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMenu;
 use App\Models\MealHistory;
 use App\Models\Menu;
 use App\Models\MenuEmail;
@@ -128,7 +129,7 @@ class MenuController extends Controller
 
     public function sendEmail(Request $r) {
 
-        Mail::to('ms@dobris.net')->send(new MenuEmail());
+        Mail::to('ms@dobris.net')->send(new SendMenu());
     }
 
 

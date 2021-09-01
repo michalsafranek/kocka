@@ -34,6 +34,8 @@ export default {
         sendTest() {
             axios.post('/menu/send', {}).then((response) => {
 
+            }).catch((error) => {
+                console.log(error);
             })
         }
     }

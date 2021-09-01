@@ -2380,7 +2380,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     sendTest: function sendTest() {
-      axios.post('/menu/send', {}).then(function (response) {});
+      axios.post('/menu/send', {}).then(function (response) {})["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });

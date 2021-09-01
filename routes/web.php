@@ -24,10 +24,11 @@ Route::get('/menu/mealHistory/{id}', [\App\Http\Controllers\MenuController::clas
 Route::get('/menu/getMenus/{id}' ,[\App\Http\Controllers\MenuController::class, 'getMenus'])->middleware('auth');
 Route::get('/menu/print/{restaurant}/{year}/{week}', [\App\Http\Controllers\MenuController::class, 'printPdf'])->middleware('auth');
 Route::get('/menu/email/{restaurant}/{year}/{week}', [\App\Http\Controllers\MenuController::class, 'emailPdf'])->middleware('auth');
+Route::post('/menu/send', [\App\Http\Controllers\MenuController::class, 'sendEmail'])->middleware('auth');
 Route::post('/menu/{restaurant}', [\App\Http\Controllers\MenuController::class, 'saveMenu'])->middleware('auth');
 Route::get('/todayMenu', [\App\Http\Controllers\MenuController::class, 'todayMenu']);
 
-Route::post('/menu/send', [\App\Http\Controllers\MenuController::class, 'sendEmail'])->middleware('auth');
+
 
 
 
