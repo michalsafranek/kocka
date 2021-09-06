@@ -2363,7 +2363,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "SendMenu",
   props: {
@@ -2375,13 +2374,43 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      captionValue: 'Polední menu ' + this.restaurant.name + ' ' + this.menu.caption
+      captionValue: 'Polední menu ' + this.restaurant.name + ' ' + this.menu.caption,
+      sendingTest: false,
+      sendingRegular: false,
+      toEmail: 'ms@dobris.net'
     };
   },
   methods: {
     sendTest: function sendTest() {
-      axios.post('/menu/send', {}).then(function (response) {})["catch"](function (error) {
-        console.log(error);
+      var vm = this;
+      this.sendingTest = true;
+      axios.post('/menu/send', {
+        restaurant: this.menu.restaurant,
+        year: this.menu.year,
+        week: this.menu.week,
+        toEmail: this.toEmail,
+        emails: []
+      }).then(function (response) {
+        vm.sendingTest = false;
+      })["catch"](function (error) {
+        vm.sendingTest = false;
+        alert('Chyba při odesílání e-mailu');
+      });
+    },
+    send: function send() {
+      var vm = this;
+      this.sendingRegular = true;
+      axios.post('/menu/send', {
+        restaurant: this.menu.restaurant,
+        year: this.menu.year,
+        week: this.menu.week,
+        toEmail: this.toEmail,
+        emails: this.emails
+      }).then(function (response) {
+        vm.sendingRegular = false;
+      })["catch"](function (error) {
+        vm.sendingRegular = false;
+        alert('Chyba při odesílání e-mailu');
       });
     }
   }
@@ -43437,24 +43466,44 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-outline-primary btn-block",
+              attrs: { disabled: _vm.sendingTest },
               on: {
                 click: function($event) {
                   return _vm.sendTest()
                 }
               }
             },
-            [_vm._v("Odeslat testovací e-mail")]
+            [
+              _vm.sendingTest
+                ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
+                : _vm._e(),
+              _vm._v(" Odeslat testovací e-mail")
+            ]
           ),
           _vm._v(" "),
           _c("small", { staticClass: "text-muted " }, [
-            _vm._v("E-mail na zamek.dobris@seznam.cz")
+            _vm._v("E-mail na " + _vm._s(_vm.toEmail))
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-6" }, [
-          _c("button", { staticClass: "btn btn-primary btn-block" }, [
-            _vm._v("Odeslat na adresy (" + _vm._s(_vm.emails.length) + ")")
-          ])
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-block",
+              on: {
+                click: function($event) {
+                  return _vm.send()
+                }
+              }
+            },
+            [
+              _vm.sendingRegular
+                ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
+                : _vm._e(),
+              _vm._v(" Odeslat na adresy (" + _vm._s(_vm.emails.length) + ")")
+            ]
+          )
         ])
       ])
     ])

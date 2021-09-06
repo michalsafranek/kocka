@@ -108,75 +108,37 @@ class MenuController extends Controller
 
     }
 
-    private function dayName($num) {
-        switch($num) {
-            case 0: return "Pondělí";
-            case 1: return "Úterý";
-            case 2: return "Středa";
-            case 3: return "Čtvrtek";
-            case 4: return "Pátek";
-            case 5: return "Sobota";
-            case 6: return "Neděle";
-        }
+
+    public function printPdf(Request $request, $restaurant, $year, $week) {
+        $menu = Menu::where(['restaurant' => $restaurant, 'year' => $year, 'week' => $week])->first();
+        $mpdf = $menu->getPdf();
+        $mpdf->Output('menu.pdf','I');
+
     }
 
     public function emailPdf(Request $r, $restaurant, $year, $week) {
         $menu = Menu::where(['restaurant' => $restaurant, 'year' => $year, 'week' => $week])->first();
-        $emails = MenuEmail::where(['restaurant' => $restaurant])->get();
+        $emails = MenuEmail::where(['restaurant' => $restaurant])->pluck('email');
         $restaurant = Restaurant::where(['id' => $restaurant])->first();
         return view('menuAdmin.sendEmails', compact('restaurant', 'menu', 'emails'));
     }
 
-    public function sendEmail(Request $r) {
+    public function sendEmail(Request $request) {
+        $validated = $request->validate([
+            'restaurant' => 'integer|required',
+            'year' => 'digits:4|required',
+            'week' => 'numeric|min:0|max:54|required',
+            'emails' => 'array',
+            'toEmail' => 'email|required'
+        ]);
 
-        Mail::to('ms@dobris.net')->send(new SendMenu());
+
+        $menu = Menu::where(['restaurant' => $validated['restaurant'], 'year' => $validated['year'], 'week' => $validated['week']])->first();
+        Mail::send(new SendMenu($menu, $validated['toEmail'], $validated['emails']));
     }
 
 
-    public function printPdf(Request $r, $restaurant, $year, $week) {
-        $menu = Menu::where(['restaurant' => $restaurant, 'year' => $year, 'week' => $week])->first();
-        $mpdf = new Mpdf(['utf-8']);
-        $daysHtml = '';
 
-
-
-        foreach($menu->days as $day){
-            if(count($day['meals']) > 0) {
-                $daysHtml .= '<h4>'.$this->dayName($day['day']).'</h4>';
-
-                foreach($day['meals'] as $meal) {
-                    if($meal->type == 'text') {
-                        $daysHtml .= '<div style="text-align: center">'.$meal->name.'</div>';
-                    }
-                    else {
-                        $daysHtml .= '<div><img src="images/meal_icons/'.$meal->type.'.png" style="height: 12px;"> '.$meal->name.'......................'.$meal->price.' Kč</div>';
-                    }
-
-                }
-            }
-
-        }
-
-
-        $mpdf->WriteHTML('
-        <style>
-            body { font-size: 10pt; }
-            h1 { font-family: cambria; font-weight: bold; font-size: 16pt; text-decoration: underline;}
-            img#logo { width: 4cm;}
-        </style>
-        <div style="text-align: right"><img id="logo" src="images/logo_print/'.$restaurant.'.jpg"></div>
-        <div style="text-align: center;">
-            <h1>Nabídka poledního menu od '.$menu->caption.'</h1>
-            '.$daysHtml.'
-        </div>
-
-
-        ');
-
-
-        $mpdf->Output('poledni_menu.pdf', 'I');
-
-    }
 
 
 
